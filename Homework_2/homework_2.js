@@ -16,7 +16,7 @@ function makeObjectDeepCopy(object) {
 function selectFromInterval(arr, first, second) {
   let result;
   function isValidNumber(value) {
-    return typeof value === 'number' && isFinite(value) && !isNaN(value);
+    return typeof value === 'number' && isFinite(value) && Number.isInteger(value);
   }
   if (Array.isArray(arr) && arr.every((item) => {return isValidNumber(item)}) && isValidNumber(first) &&
     isValidNumber(second)) {
@@ -40,8 +40,8 @@ const myIterable = {
   
   next() {
     if (this.hasOwnProperty('from') && this.hasOwnProperty('to') 
-      && typeof this.from === 'number' && isFinite(this.from) && !isNaN(this.from)
-      && typeof this.to === 'number' && isFinite(this.to) && !isNaN(this.to) 
+      && typeof this.from === 'number' && isFinite(this.from) && Number.isInteger(this.from)
+      && typeof this.to === 'number' && isFinite(this.to) && Number.isInteger(this.to) 
       && this.to > this.from) {
       if (this.current <= this.to) {
         return {
