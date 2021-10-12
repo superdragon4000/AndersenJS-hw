@@ -1,6 +1,9 @@
-function concatStrings(arg) {
+function concatStrings(arg, separator) {
   if (typeof arg !== 'string') {
     return '';
+  }
+  if (typeof separator !== 'string') {
+    separator = '';
   }
   return curry();
   function curry() {
@@ -8,7 +11,7 @@ function concatStrings(arg) {
       if (typeof nextArg !== 'string') {
         return arg;
       }
-      arg = arg.concat(nextArg);
+      arg = arg.concat(separator, nextArg);
       return curry();
     };
   }
