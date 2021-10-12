@@ -1,3 +1,11 @@
+function concatStrings(...args) {
+  let s = args.reduce((a,b)=>a+b)
+
+   return function (...x) {
+     return x.length == 0 ? s : sum(s, ...x)
+    };
+}
+
 class Calculator {
   constructor(x, y) {
     if (Number.isSafeInteger(x) && Number.isSafeInteger(y)) {
