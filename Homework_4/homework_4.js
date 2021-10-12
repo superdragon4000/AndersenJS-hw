@@ -1,9 +1,17 @@
-function concatStrings(...args) {
-  let s = args.reduce((a,b)=>a+b)
-
-   return function (...x) {
-     return x.length == 0 ? s : sum(s, ...x)
+function concatStrings(arg) {
+  if (typeof arg !== 'string') {
+    return '';
+  }
+  return curry();
+  function curry() {
+    return function concat(nextArg) {
+      if (typeof nextArg !== 'string') {
+        return arg;
+      }
+      arg = arg.concat(nextArg);
+      return curry();
     };
+  }
 }
 
 class Calculator {
