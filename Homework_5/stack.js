@@ -6,7 +6,7 @@ class Stack {
     if (Number.isSafeInteger(capacity) && capacity >=0) {
       this.#capacity = capacity;
     } else if (capacity === undefined) {
-      this.#capacity = undefined;
+      this.#capacity = 10;
     } else {
       throw new Error('Ошибка!');
     }
