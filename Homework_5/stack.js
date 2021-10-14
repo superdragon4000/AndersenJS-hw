@@ -1,7 +1,7 @@
 class Stack {
   #capacity;
   #size = 0;
-  #head;
+  #pointer;
   constructor(capacity) {
     if (Number.isSafeInteger(capacity) && capacity >=0) {
       this.#capacity = capacity;
@@ -16,10 +16,10 @@ class Stack {
     if (this.#size === this.#capacity) {
       throw new Error("Стек переполнен");
     } else {
-      let nextHead = Object.create(null);
-      nextHead.value = value;
-      nextHead.next = this.#head;
-      this.#head = nextHead;
+      let nextPointer = Object.create(null);
+      nextPointer.value = value;
+      nextPointer.next = this.#pointer;
+      this.#pointer = nextPointer;
       this.#size += 1;
     }
   };
@@ -28,8 +28,8 @@ class Stack {
     if (this.#size === 0) {
       throw new Error("Стек пуст");
     } else {
-      let value = this.#head.value;
-      this.#head = this.#head.next;
+      let value = this.#pointer.value;
+      this.#pointer = this.#pointer.next;
       this.#size -= 1;
       return value;
     }
@@ -58,10 +58,10 @@ class Stack {
       return [];
     } else {
       let arr = [];
-      let currentHead = this.#head;
+      let currentpointer = this.#pointer;
       for (let i = 1; i <= this.#size; i++) {
-        arr[this.#size - i] = currentHead.value;
-        currentHead = currentHead.next;
+        arr[this.#size - i] = currentpointer.value;
+        currentpointer = currentpointer.next;
       }
       return arr;
     }
