@@ -58,10 +58,10 @@ class Stack {
       return [];
     } else {
       let arr = [];
-      let currentpointer = this.#pointer;
+      let currentPointer = this.#pointer;
       for (let i = 1; i <= this.#size; i++) {
-        arr[this.#size - i] = currentpointer.value;
-        currentpointer = currentpointer.next;
+        arr[this.#size - i] = currentPointer.value;
+        currentPointer = currentPointer.next;
       }
       return arr;
     }
