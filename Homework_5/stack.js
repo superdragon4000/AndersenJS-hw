@@ -24,8 +24,16 @@ class Stack {
     }
   };
 
-  pop = () => {
+  isEmpty = () => {
     if (this.#size === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  pop = () => {
+    if (this.isEmpty()) {
       throw new Error("Стек пуст");
     } else {
       let value = this.#pointer.value;
@@ -41,14 +49,6 @@ class Stack {
     } else {
       let value = this.#pointer.value;
       return value;
-    }
-  };
-
-  isEmpty = () => {
-    if (this.#size === 0) {
-      return true;
-    } else {
-      return false;
     }
   };
 
