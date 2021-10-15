@@ -39,8 +39,7 @@ class Stack {
     if (this.#size === 0) {
       return null;
     } else {
-      let value = this.pop();
-      this.push(value);
+      let value = this.#pointer.value;
       return value;
     }
   };
