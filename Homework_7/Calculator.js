@@ -68,25 +68,24 @@ class InputManager {
   }
 
   onEqualsClick() {
-    if(this.secondNumber !== undefined) {
-      switch(this.operator) {
-        case '+':
-          this.firstNumber = this.calc.sum(this.firstNumber, this.secondNumber);
-          break;
-        case '-':
-          this.firstNumber = this.calc.sub(this.firstNumber, this.secondNumber);
-          break;
-        case '*':
-          this.firstNumber = this.calc.mult(this.firstNumber, this.secondNumber);
-          break;
-        case '/':
-          this.firstNumber = this.calc.div(this.firstNumber, this.secondNumber);
-          break;
-      }
-      updateOutput(this.firstNumber);
-      this.isOperatorClicked = false;
-      this.secondNumber = undefined;
+    if(this.secondNumber === undefined) return;
+    switch(this.operator) {
+      case '+':
+        this.firstNumber = this.calc.sum(this.firstNumber, this.secondNumber);
+        break;
+      case '-':
+        this.firstNumber = this.calc.sub(this.firstNumber, this.secondNumber);
+        break;
+      case '*':
+        this.firstNumber = this.calc.mult(this.firstNumber, this.secondNumber);
+        break;
+      case '/':
+        this.firstNumber = this.calc.div(this.firstNumber, this.secondNumber);
+        break;
     }
+    updateOutput(this.firstNumber);
+    this.isOperatorClicked = false;
+    this.secondNumber = undefined;
   }
 
   onDotClick() {
@@ -100,51 +99,7 @@ class InputManager {
   }
 }
 
-
 function updateOutput(value) {
   const output = document.getElementsByClassName('output')[0];
   output.value = value;
 }
-
-const numberButtons = document.querySelectorAll('[data-number]');
-const operatorButtons = document.querySelectorAll('[data-operation]');
-const oppositeButton = document.querySelector('[data-opposite]');
-const deleteButton = document.querySelector('[data-delete]');
-const clearButton = document.querySelector('[data-clear]');
-const equalsButton = document.querySelector('[data-equals]');
-const dotButton = document.querySelector('[data-dot]');
-
-const inputManager = new InputManager();
-
-
-numberButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    inputManager.onNumberClick(button.value);
-  });
-});
-
-operatorButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    inputManager.onOperatorClick(button.value);
-  });
-});
-
-oppositeButton.addEventListener('click', () => {
-  inputManager.onOppositeClick();
-});
-
-deleteButton.addEventListener('click', () => {
-  inputManager.onDeleteClick();
-});
-
-clearButton.addEventListener('click', () => {
-  inputManager.onClearClick();
-});
-
-equalsButton.addEventListener('click', () => {
-  inputManager.onEqualsClick();
-});
-
-dotButton.addEventListener('click', () => {
-  inputManager.onDotClick();
-});
