@@ -93,6 +93,7 @@ class Car {
       throw new Error('Должно быть числом больше 0');
     }
   }
+  
   start() {
     if (this.#isStarted) {
       throw new Error('Машина уже заведена');
