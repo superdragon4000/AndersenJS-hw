@@ -10,7 +10,7 @@ const dotButton = document.querySelector('[data-dot]');
 
 numberButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    inputManager.onNumberClick(button.value);
+    inputManager.onNumberClick(+button.value);
   });
 });
 

@@ -28,12 +28,12 @@ class InputManager {
   
   onNumberClick(number) {
     if (!this.isOperatorClicked) {
-      this.firstNumber = (this.firstNumber === 0) ? parseFloat(number, 10) : 
-        parseFloat(this.firstNumber + number, 10);
+      this.firstNumber = (this.firstNumber === 0) ? number : 
+        this.firstNumber + number;
       updateOutput(this.firstNumber);
     } else {
-      this.secondNumber = (this.secondNumber === undefined) ? parseFloat(number, 10) : 
-        parseFloat(this.secondNumber + number, 10);
+      this.secondNumber = (this.secondNumber === undefined) ? number : 
+        this.secondNumber + number;
       updateOutput(this.secondNumber);
     }
   }
